@@ -20,3 +20,6 @@ Cilj projekta je ---------------------------------.
    
   	![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/b3e0b0c0b5d5edd6e084c574a1ac797594981773/Slike/Slika2.png)
 
+## 4. Pravimo modul koji prima putanju fajla i ispisuje koji procesi koriste taj fajl
+1. nano hello.c (menjamo kod)
+
