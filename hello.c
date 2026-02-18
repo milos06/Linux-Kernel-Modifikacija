@@ -4,6 +4,9 @@
 #include <linux/sched/signal.h>
 #include <linux/fdtable.h>
 #include <linux/mm.h>
+#include <linux/cred.h>
+#include <linux/timekeeping.h>
+#include <linux/slab.h>
 
 static char *filepath = "/tmp/testfile.txt";
 module_param(filepath, charp, 0000);
@@ -14,27 +17,27 @@ static int __init hello_init(void)
     struct inode *target_inode;
     struct task_struct *task;
 
-    printk(KERN_INFO "Module loaded\n");
+    printk(KERN_INFO "===== MODULE LOADED =====\n");
+    printk(KERN_INFO "Target file: %s\n", filepath);
 
-    /* Otvori fajl u kernelu */
     target_file = filp_open(filepath, O_RDONLY, 0);
     if (IS_ERR(target_file)) {
-        printk(KERN_INFO "Ne mogu da otvorim fajl\n");
+        printk(KERN_INFO "Cannot open file\n");
         return PTR_ERR(target_file);
     }
 
     target_inode = file_inode(target_file);
 
-    printk(KERN_INFO "Trazim procese koji koriste inode: %lu\n",
+    printk(KERN_INFO "Searching processes using inode: %lu\n",
            target_inode->i_ino);
 
-    /* Prolaz kroz sve procese */
     for_each_process(task) {
 
-        struct files_struct *files = task->files;
+        struct files_struct *files;
         struct fdtable *fdt;
         unsigned int i;
 
+        files = task->files;
         if (!files)
             continue;
 
@@ -45,15 +48,29 @@ static int __init hello_init(void)
 
             struct file *file = fdt->fd[i];
 
-            if (file && file_inode(file) == target_inode) {
+            if (file &&
+                file_inode(file)->i_ino == target_inode->i_ino &&
+                file_inode(file)->i_sb == target_inode->i_sb) {
+
+                kuid_t uid = task_uid(task);
+                unsigned long mem = 0;
+                unsigned long utime, stime;
+
+                if (task->mm)
+                    mem = (task->mm->total_vm << (PAGE_SHIFT - 10));
+
+                utime = task->utime;
+                stime = task->stime;
 
                 printk(KERN_INFO
-                       "PID: %d | Name: %s | Prio: %d | Nice: %d | Mem: %lu KB\n",
+                       "PID: %d | Name: %s | UID: %d | Prio: %d | Nice: %d | Mem: %lu KB | CPU time: %lu\n",
                        task->pid,
                        task->comm,
+                       __kuid_val(uid),
                        task->prio,
                        task_nice(task),
-                       task->mm ? (task->mm->total_vm << (PAGE_SHIFT - 10)) : 0);
+                       mem,
+                       utime + stime);
             }
         }
 
@@ -62,12 +79,14 @@ static int __init hello_init(void)
 
     filp_close(target_file, NULL);
 
+    printk(KERN_INFO "===== END OF SEARCH =====\n");
+
     return 0;
 }
 
 static void __exit hello_exit(void)
 {
-    printk(KERN_INFO "Module unloaded\n");
+    printk(KERN_INFO "===== MODULE UNLOADED =====\n");
 }
 
 module_init(hello_init);
