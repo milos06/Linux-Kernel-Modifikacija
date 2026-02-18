@@ -39,3 +39,6 @@ Cilj projekta je ---------------------------------.
 6. sudo dmesg | tail
 
 	![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/46bd78a9af8621912f432f8dc289fc30914296ef/Slike/slika4.png)
+
+## 5. Pronalazak inode i prolaz kroz sve procese
+1. nano helo.c (izmena)
