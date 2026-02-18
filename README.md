@@ -48,7 +48,7 @@ Cilj projekta je ---------------------------------.
 5. nano /tmp/testfile.txt (otvaramo fajl)
 6. sudo insmod hello.ko filepath=/tmp/testfile.txt
 7. sudo dmesg | tail -n 30
-    ![image alt]()
+    ![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/5e3a08192e5e36b39d22c72073bfda880ec5b7ea/Slike/Slika5.png)
 
 
 
