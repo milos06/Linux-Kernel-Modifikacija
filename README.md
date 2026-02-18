@@ -22,4 +22,10 @@ Cilj projekta je ---------------------------------.
 
 ## 4. Pravimo modul koji prima putanju fajla i ispisuje koji procesi koriste taj fajl
 1. nano hello.c (menjamo kod)
+2. make clean
+3. make
+4. touch /tmp/testfile.txt
+5. sudo insmod hello.ko filepath=/tmp/testfile.txt
+6. sudo dmesg | tail
 
+	![image alt]()
