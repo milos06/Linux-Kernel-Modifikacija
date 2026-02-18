@@ -40,7 +40,7 @@ Cilj projekta je ---------------------------------.
 
 	![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/46bd78a9af8621912f432f8dc289fc30914296ef/Slike/slika4.png)
 
-## 5. Pronalazak inode i prolaz kroz sve procese
+## 6. Pronalazak inode i prolaz kroz sve procese
 1. nano helo.c (izmena)
 2. make clean
 3. make
@@ -48,7 +48,16 @@ Cilj projekta je ---------------------------------.
 5. nano /tmp/testfile.txt (otvaramo fajl)
 6. sudo insmod hello.ko filepath=/tmp/testfile.txt
 7. sudo dmesg | tail -n 30
-    ![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/5e3a08192e5e36b39d22c72073bfda880ec5b7ea/Slike/Slika5.png)
 
+   ![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/5e3a08192e5e36b39d22c72073bfda880ec5b7ea/Slike/Slika5.png)
 
+## 7. Konacno resenje
+1. nano hello.c (izmena koda)
+2. make clean
+3. make
+4. sudo rmmod hello
+5. sudo insmod hello.ko filepath=/tmp/testfile.txt
+6. sudo dmesg | tail -n 40
+
+ ![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/5e3a08192e5e36b39d22c72073bfda880ec5b7ea/Slike/Slika5.png)
 
