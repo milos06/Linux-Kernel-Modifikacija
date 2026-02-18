@@ -14,4 +14,8 @@ Cilj projekta je ---------------------------------.
 2. cd ~/kernel_proj
 3. nano hello.c (pocetni)
 4. nano Makefile
+5. make
+6. sudo insmod hello.ko
+7. sudo dmesg | tail
+  	![image alt]()
 
