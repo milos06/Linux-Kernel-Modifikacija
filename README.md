@@ -17,5 +17,6 @@ Cilj projekta je ---------------------------------.
 5. make
 6. sudo insmod hello.ko
 7. sudo dmesg | tail
+   
   	![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/b3e0b0c0b5d5edd6e084c574a1ac797594981773/Slike/Slika2.png)
 
