@@ -28,4 +28,9 @@ Cilj projekta je ---------------------------------.
 5. sudo insmod hello.ko filepath=/tmp/testfile.txt
 6. sudo dmesg | tail
 
-	![image alt]()
+	![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/9f902b81f4e4212702953d85e0ee1adfc28ae57e/Slike/Slika3.png)
+
+## 5. Inode
+1. nano hello.c (izmene)
+2. 
+
