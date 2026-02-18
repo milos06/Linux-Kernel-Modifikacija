@@ -42,3 +42,13 @@ Cilj projekta je ---------------------------------.
 
 ## 5. Pronalazak inode i prolaz kroz sve procese
 1. nano helo.c (izmena)
+2. make clean
+3. make
+4. echo "test" > /tmp/testfile.txt
+5. nano /tmp/testfile.txt (otvaramo fajl)
+6. sudo insmod hello.ko filepath=/tmp/testfile.txt
+7. sudo dmesg | tail -n 30
+    ![image alt]()
+
+
+
