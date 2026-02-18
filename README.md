@@ -12,5 +12,6 @@ Cilj projekta je ---------------------------------.
 ## 3. Priprema prvog modula
 1. mkdir ~/kernel_proj
 2. cd ~/kernel_proj
-3. nano hello.c
+3. nano hello.c (pocetni)
+4. nano Makefile
 
