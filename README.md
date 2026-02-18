@@ -59,5 +59,5 @@ Cilj projekta je ---------------------------------.
 5. sudo insmod hello.ko filepath=/tmp/testfile.txt
 6. sudo dmesg | tail -n 40
 
- ![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/5e3a08192e5e36b39d22c72073bfda880ec5b7ea/Slike/Slika5.png)
+ ![image alt](https://github.com/milos06/Linux-Kernel-Modifikacija/blob/3fa6d6579195bb3e41cbab1a01e53d20627ba6c4/Slike/slika6.png)
 
